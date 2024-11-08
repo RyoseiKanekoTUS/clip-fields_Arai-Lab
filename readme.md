@@ -9,18 +9,20 @@ https://user-images.githubusercontent.com/3000253/195213301-43eae6e8-4516-4b8d-9
 
 **Tl;dr** CLIP-Field is a novel weakly supervised approach for learning a semantic robot memory that can respond to natural language queries solely from raw RGB-D and odometry data with no extra human labelling. It combines the image and language understanding capabilites of novel vision-language models (VLMs) like CLIP, large language models like sentence BERT, and open-label object detection models like Detic, and with spatial understanding capabilites of neural radiance field (NeRF) style architectures to build a spatial database that holds semantic information in it.
 
-## Installation
+## Installation Arai-lab ver.
 To properly install this repo and all the dependencies, follow these instructions.
 
 ```
 # Clone this repo.
-git clone --recursive https://github.com/notmahi/clip-fields
-cd clip-fields
+git clone --recursive https://github.com/notmahi/clip-fields_Arai-Lab
+cd clip-fields_Arai-Lab
 
+# Make sure that you have installed cuda-toolkit-12.1 (when you 'nvcc -V', return should be 'Cuda compilation tools, release 12.1, V12.1.66')
 # Create conda environment and install the dependencies.
 conda create -n cf python=3.8
 conda activate cf
-conda install -y pytorch torchvision torchaudio cudatoolkit=11.8 -c pytorch-lts -c nvidia
+conda install pip
+pip install torch torchvision torchaudio
 pip install -r requirements.txt
 
 # Install the hashgrid encoder with the relevant cuda module.
