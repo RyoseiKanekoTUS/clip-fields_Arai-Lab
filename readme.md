@@ -28,11 +28,15 @@ pip install -r requirements.txt
 # Install the hashgrid encoder with the relevant cuda module.
 cd gridencoder
 # For this part, it may be necessary to find out what your nvcc path is and use that, 
-# For me $which nvcc gives public/apps/cuda/11.8/bin/nvcc, so I used the following part
-# export CUDA_HOME=/public/apps/cuda/11.8
+# For me $which nvcc gives /usr/local/cuda-12.1/bin/nvcc, so I used the following part
+# export CUDA_HOME=/usr/local/cuda-12.1/
 python setup.py install
 cd ..
-# activate submodules
+
+# Activate submodules and submodules in submodules
+git submodule init
+git submodule update
+cd Detic
 git submodule init
 git submodule update
 ```
