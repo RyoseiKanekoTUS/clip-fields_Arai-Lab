@@ -32,6 +32,9 @@ cd gridencoder
 # export CUDA_HOME=/public/apps/cuda/11.8
 python setup.py install
 cd ..
+# activate submodules
+git submodule init
+git submodule update
 ```
 ## Interactive Tutorial and Evaluation
 We have an interactive tutorial and evaluation notebook that you can use to explore the model and evaluate it on your own data. You can find them in the [`demo/`](https://github.com/notmahi/clip-fields/tree/main/demo) directory, that you can run after installing the dependencies.
