@@ -151,7 +151,7 @@ sentence_model = SentenceTransformer("all-mpnet-base-v2")
 sys.path.append("../") # add parent directory to path
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-training_data = torch.load("./detic_labeled_dataset.pt")
+training_data = torch.load("./detic_labeled_dataset_1.pt")
 max_coords, _ = training_data._label_xyz.max(dim=0)
 min_coords, _ = training_data._label_xyz.min(dim=0)
 
@@ -168,7 +168,7 @@ label_model = GridCLIPModel(
     min_coords=min_coords,
 ).to(DEVICE)
 
-model_weights_path = "./clip_implicit_model/implicit_scene_label_model_latest.pt"
+model_weights_path = "./clip_implicit_model/implicit_scene_label_model_latest_1.pt"
 model_weights = torch.load(model_weights_path, map_location=DEVICE)
 label_model.load_state_dict(model_weights["model"])
 print(label_model)
@@ -213,13 +213,13 @@ valid_points = get_and_show_valid_points(coordinates) # show heatmap
 print("Found some valid points:", valid_points.shape)
 
 # # clip_fields demo queries
-# queries = [
-#     # Literal
-#     "Stack of plates",
-#     "microwave",
-#     "the fridghe",  # intentional misspelling
-#     "coffee machine",
-#     "sink",
+queries = [
+    # Literal
+    "Stack of plates",
+    "microwave",
+    "the fridghe",  # intentional misspelling
+    "coffee machine",
+    "sink",
 
 #     # Visual
 #     # "white ceramic bowl",
@@ -231,23 +231,23 @@ print("Found some valid points:", valid_points.shape)
 #     # "purple poster",
 #     # "toaster oven",
 
-#     # Semantic
-#     "wash my dishes",
-#     "wash my hand",
-#     "throw my trash",
-#     "store my food",
-#     "put away my leftovers",
-#     "fill out water bottle",
-#     "make some coffee",
-#     "warm up my lunch",
-# ]
-
-queries = [
-    # "open the door",
-    # "open the closet",
-    # "open the trash can"
-    "get some water from the fridge"
+    # Semantic
+    "wash my dishes",
+    "wash my hand",
+    "throw my trash",
+    "store my food",
+    "put away my leftovers",
+    "fill out water bottle",
+    "make some coffee",
+    "warm up my lunch",
 ]
+
+# queries = [
+#     # "open the door",
+#     # "open the closet",
+#     # "open the trash can"
+#     "get some water from the fridge"
+# ]
 
 
 # TODO: change to visual = True for visual queries.
