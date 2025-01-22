@@ -1,6 +1,6 @@
 import logging
 import os
-import time
+import datetime
 import pprint
 import random
 from typing import Dict, Union
@@ -29,7 +29,7 @@ DEVICE = "cuda"
 IMAGE_TO_LABEL_CLIP_LOSS_SCALE = 1.0
 LABEL_TO_IMAGE_LOSS_SCALE = 1.0
 EXP_DECAY_COEFF = 0.5
-SAVE_EVERY = 5
+SAVE_EVERY = 100
 METRICS = {
     "accuracy": torchmetrics.Accuracy,
 }
@@ -202,7 +202,7 @@ def save(
     }
     torch.save(
         state_dict,
-        f"{save_directory}/implicit_scene_label_model_latest.pt",
+        f"{save_directory}/implicit_scene_label_model_latest{datetime.datetime.now()}.pt",
     )
     return 0
 
